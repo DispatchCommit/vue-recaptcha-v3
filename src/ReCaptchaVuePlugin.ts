@@ -29,7 +29,6 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
     Vue.prototype.$recaptchaInstance = wrapper
     loadedWaiters.forEach((v) => v(true))
   }).catch((error) => {
-    console.error(error)
     recaptchaError = true
     loadedWaiters.forEach((v) => v(false))
   })
