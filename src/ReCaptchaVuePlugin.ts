@@ -12,12 +12,11 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
   // eslint-disable-next-line @typescript-eslint/promise-function-async
   Vue.prototype.$recaptchaLoaded = () => new Promise<boolean>((resolve, reject) => {
     if (recaptchaError === false) {
-      return reject('reCAPTCHA Error');
-    }
+      return reject(new Error('reCAPTCHA Error'))    }
     if (recaptchaLoaded === true) {
       return resolve(true)
     }
-    loadedWaiters.push((success) => success ? resolve(true) : reject('reCAPTCHA Error'))
+    loadedWaiters.push((success) => success ? resolve(true) : reject(new Error('reCAPTCHA Error')))
   })
 
   plugin.initializeReCaptcha(options).then((wrapper) => {
@@ -30,6 +29,7 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
     loadedWaiters.forEach((v) => v(true))
   }).catch((error) => {
     console.error(error)
+    recaptchaError = true
     loadedWaiters.forEach((v) => v(false))
   })
 }
