@@ -12,7 +12,8 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
   // eslint-disable-next-line @typescript-eslint/promise-function-async
   Vue.prototype.$recaptchaLoaded = () => new Promise<boolean>((resolve, reject) => {
     if (recaptchaError === false) {
-      return reject(new Error('reCAPTCHA Error'))    }
+      return reject(new Error('reCAPTCHA Error'))
+    }
     if (recaptchaLoaded === true) {
       return resolve(true)
     }
