@@ -17,7 +17,7 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
     if (recaptchaLoaded === true) {
       return resolve(true)
     }
-    loadedWaiters.push({resolve, reject})
+    loadedWaiters.push({ resolve, reject })
   })
 
   plugin.initializeReCaptcha(options).then((wrapper) => {
