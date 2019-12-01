@@ -7,7 +7,7 @@ export function VueReCaptcha (Vue: typeof _Vue, options: IReCaptchaOptions): voi
   let recaptchaLoaded = false
   let recaptchaError: Error = null
 
-  const loadedWaiters: Array<({resolve: (resolve?: boolean) => void, reject: (reject?: Error) => void})> = []
+  const loadedWaiters: Array<({resolve: (resolve: boolean) => void, reject: (reject: Error) => void})> = []
 
   // eslint-disable-next-line @typescript-eslint/promise-function-async
   Vue.prototype.$recaptchaLoaded = () => new Promise<boolean>((resolve, reject) => {
